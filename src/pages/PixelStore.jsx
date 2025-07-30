@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart, FiStar } from 'react-icons/fi';
 import products from '../data/product';
 
 const PixelStore = ({ addToCart }) => {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [cart, setCart] = useState([]);
-
-  const handleAddToCart = (product, e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addToCart(product);
-    setCart([...cart, product]);
-  };
+  const [activeCategory, setActiveCategory] = React.useState('all');
 
   const filteredProducts = activeCategory === 'all' 
     ? products 
@@ -26,7 +18,7 @@ const PixelStore = ({ addToCart }) => {
             PixelStore
           </h1>
           <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500">
-            Premium digital assets for creators and developers
+            Premium digital assets for creators
           </p>
         </div>
 
@@ -48,62 +40,50 @@ const PixelStore = ({ addToCart }) => {
           ))}
         </div>
 
-        <div className="fixed top-4 right-4 bg-white p-3 rounded-lg shadow-lg z-10">
-          <div className="flex items-center">
-            <FiShoppingCart className="text-gray-700 text-xl mr-2" />
-            <span className="font-medium">{cart.length} items</span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product) => (
             <Link 
-              to={`/product/${product.id}`} 
-              key={product.id} 
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              to={`/product/${product.id}`}
+              key={product.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  {product.icon}
-                  <h3 className="ml-3 text-lg font-medium text-gray-900">{product.name}</h3>
+              <div className="relative">
+                <img 
+                  src={product.coverImage} 
+                  alt={product.name}
+                  className="w-full h-48 object-cover"
+                />
+                {product.previewType && (
+                  <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-xs flex items-center">
+                    {product.previewType === 'youtube' ? 'Video' : 'Audio'} Preview
+                  </div>
+                )}
+              </div>
+              <div className="p-4">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-medium text-gray-900">{product.name}</h3>
+                  <div className="flex items-center text-yellow-400">
+                    <FiStar className="fill-current w-4 h-4" />
+                    <span className="text-gray-600 ml-1 text-sm">4.8</span>
+                  </div>
                 </div>
-                <p className="text-gray-600 mb-4">{product.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold text-gray-900">${product.price}</span>
+                <p className="text-gray-500 text-sm mt-1">{product.description}</p>
+                <div className="flex justify-between items-center mt-4">
+                  <span className="font-bold text-lg">${product.price}</span>
                   <button
-                    onClick={(e) => handleAddToCart(product, e)}
-                    className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      addToCart(product);
+                    }}
+                    className="p-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
                   >
-                    <FiShoppingCart className="mr-2" />
-                    Add to Cart
+                    <FiShoppingCart />
                   </button>
                 </div>
               </div>
             </Link>
           ))}
         </div>
-
-        {cart.length > 0 && (
-          <div className="mt-12 p-6 bg-white rounded-xl shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-            <ul className="mb-6">
-              {cart.map((item, index) => (
-                <li key={index} className="flex justify-between py-2 border-b">
-                  <span>{item.name}</span>
-                  <span>${item.price}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-between items-center">
-              <span className="text-xl font-bold">
-                Total: ${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
-              </span>
-              <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                Proceed to Checkout
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

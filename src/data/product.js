@@ -1,23 +1,70 @@
-import { FiDownload, FiHeadphones, FiMusic, FiFilm, FiImage } from 'react-icons/fi';
+import { FiDownload, FiHeadphones, FiMusic, FiFilm, FiImage, FiYoutube } from 'react-icons/fi';
 
 const products = [
   {
     id: 1,
     name: "Premium Mod APK Bundle",
     category: "modapk",
-    description: "Collection of premium modified apps with unlocked features",
-    longDescription: "Get access to 10+ premium apps with all features unlocked...",
-    price: 9.99,
+    description: "50+ premium modified Android apps with unlocked features",
+    longDescription: "Get lifetime access to premium apps without subscriptions. Includes gaming mods, productivity tools, and creative apps with all pro features unlocked. Regular updates included.",
+    price: 24.99,
     features: [
-      "10+ premium apps included",
+      "50+ premium apps",
       "No ads or limitations",
-      "1 year of free updates"
+      "Lifetime updates",
+      "Detailed installation guide",
+      "24/7 support"
     ],
-    previewUrl: null,
-    coverImage: "/images/modapk-bundle.jpg",
-    icon: "download" // Just use string identifiers instead of JSX
+    previewType: "youtube",
+    previewContent: "https://www.youtube.com/embed/EXAMPLE_ID", // Replace with actual ID
+    coverImage: "/products/modapk-bundle.jpg",
+    icon: "download",
+    fileTypes: ["APK", "XAPK"],
+    tags: ["Android", "No Root", "Premium"]
   },
-  // ... other products
+  {
+    id: 2,
+    name: "Trap God Beat Pack",
+    category: "beats",
+    description: "20 hard-hitting trap beats with stems",
+    longDescription: "Professional trap beats perfect for rappers and content creators. Each beat includes mixed/mastered versions plus STEM files for customization. BPM and key included.",
+    price: 29.99,
+    features: [
+      "20 unique trap beats",
+      "Includes STEM files",
+      "150-170 BPM range",
+      "24-bit WAV format",
+      "Unlimited licenses"
+    ],
+    previewType: "audio",
+    previewContent: "/previews/trap-beat-preview.mp3",
+    coverImage: "/products/trap-beats.jpg",
+    icon: "music",
+    fileTypes: ["WAV", "MP3", "STEMS"],
+    tags: ["Trap", "Hard", "Dark"]
+  },
+  // Add 10+ more products with different categories...
+  {
+    id: 12,
+    name: "4K Stream Overlay Pack",
+    category: "overlays",
+    description: "Professional overlays for Twitch/YouTube streamers",
+    longDescription: "Complete streaming package with animated overlays, alerts, and panels. Fully customizable in After Effects. Works with OBS, Streamlabs, and more.",
+    price: 39.99,
+    features: [
+      "10+ animated overlays",
+      "Customizable colors",
+      "4K resolution",
+      "After Effects files included",
+      "Installation guide"
+    ],
+    previewType: "youtube",
+    previewContent: "https://www.youtube.com/embed/STREAM_OVERLAY_DEMO",
+    coverImage: "/products/stream-overlay.jpg",
+    icon: "image",
+    fileTypes: ["MP4", "PSD", "AEP"],
+    tags: ["Twitch", "Gaming", "Animated"]
+  }
 ];
 
 export default products;
