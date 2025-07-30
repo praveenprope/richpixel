@@ -16,7 +16,7 @@ const products = [
       "24/7 support"
     ],
     previewType: "youtube",
-    previewContent: "https://www.youtube.com/embed/EXAMPLE_ID", // Replace with actual ID
+    previewContent: "https://youtu.be/T6MFZH8k8tU?si=FODA2vpz12Dj232T", // Replace with actual video ID
     coverImage: "/products/modapk-bundle.jpg",
     icon: "download",
     fileTypes: ["APK", "XAPK"],
@@ -36,8 +36,8 @@ const products = [
       "24-bit WAV format",
       "Unlimited licenses"
     ],
-    previewType: "audio",
-    previewContent: "/previews/trap-beat-preview.mp3",
+    previewType: "youtube",
+    previewContent: "https://www.youtube.com/watch?v=T6MFZH8k8tU",
     coverImage: "/products/trap-beats.jpg",
     icon: "music",
     fileTypes: ["WAV", "MP3", "STEMS"],
@@ -59,7 +59,7 @@ const products = [
       "Installation guide"
     ],
     previewType: "youtube",
-    previewContent: "https://www.youtube.com/embed/STREAM_OVERLAY_DEMO",
+    previewContent: "https://www.youtube.com/watch?v=STREAM_OVERLAY_DEMO", // Replace with actual video ID
     coverImage: "/products/stream-overlay.jpg",
     icon: "image",
     fileTypes: ["MP4", "PSD", "AEP"],
